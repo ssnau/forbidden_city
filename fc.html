@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+	<head>
+		<script>
+var fc = [
+{'name':'神武门', 'x':969, 'y':388 },
+{'name':'延晖阁', 'x':913, 'y':512 },
+{'name':'御景亭', 'x':1044, 'y':493 },
+{'name':'位育斋', 'x':854, 'y':513 },
+{'name':'玉翠亭', 'x':827, 'y':512 },
+{'name':'澄瑞亭', 'x':855, 'y':540 },
+{'name':'千秋亭', 'x':856, 'y':601 },
+{'name':'养性斋', 'x':837, 'y':646 },
+{'name':'琼苑西门', 'x':852, 'y':696 },
+{'name':'攦藻堂', 'x':1083, 'y':503 },
+{'name':'浮碧亭', 'x':1086, 'y':528 },
+{'name':'万春亭', 'x':1090, 'y':596 },
+{'name':'琼苑东门', 'x':1104, 'y':685 },
+{'name':'绛雪轩', 'x':1105, 'y':655 },
+{'name':'天一门', 'x':974, 'y':617 },
+{'name':'重华宫', 'x':719, 'y':552 },
+{'name':'崇敬殿', 'x':713, 'y':596 },
+{'name':'漱芳斋', 'x':784, 'y':543 },
+{'name':'戏台', 'x':787, 'y':574 },
+{'name':'翠云馆', 'x':715, 'y':519 },
+{'name':'丽景轩', 'x':770, 'y':647 },
+{'name':'储秀宫', 'x':768, 'y':687 },
+{'name':'体和殿', 'x':773, 'y':750 },
+{'name':'长泰门', 'x':729, 'y':747 },
+{'name':'同道堂', 'x':653, 'y':655 },
+{'name':'咸福宫', 'x':651, 'y':694 },
+{'name':'咸福门', 'x':651, 'y':742 },
+{'name':'咸熙门', 'x':702, 'y':750 },
+{'name':'永庆门', 'x':602, 'y':751 },
+{'name':'翊坤宫', 'x':777, 'y':805 },
+{'name':'翊坤门', 'x':777, 'y':850 },
+{'name':'崇禧门', 'x':728, 'y':861 },
+{'name':'广生右门', 'x':831, 'y':858 },
+
+{'name':'怡情书史', 'x':654, 'y':767 },
+{'name':'长春宫', 'x':654, 'y':808 },
+{'name':'体元殿', 'x':658, 'y':862 },
+{'name':'太极殿', 'x':660, 'y':918 },
+{'name':'敷华门', 'x':706, 'y':864 },
+{'name':'绥祉门', 'x':616, 'y':868 },
+
+{'name':'永寿宫', 'x':781, 'y':914 },
+{'name':'永寿门', 'x':783, 'y':975 },
+{'name':'咸和右门', 'x':837, 'y':983 },
+{'name':'纯佑门', 'x':732, 'y':985 },
+{'name':'百子门', 'x':709, 'y':641 },
+{'name':'蠡斯门', 'x':721, 'y':977 },
+{'name':'养心殿', 'x':754, 'y':1028 },
+{'name':'养心门', 'x':754, 'y':1087 },
+{'name':'遵义门', 'x':841, 'y':1091 },
+{'name':'雨花阁', 'x':527, 'y':911 },
+{'name':'凝华门', 'x':523, 'y':983 },
+{'name':'昭福门', 'x':520, 'y':857 },
+{'name':'延春阁', 'x':502, 'y':580 },
+{'name':'敬胜斋', 'x':482, 'y':526 },
+{'name':'凝晖堂', 'x':459, 'y':586 },
+{'name':'静怡轩', 'x':573, 'y':559 },
+{'name':'惠风亭', 'x':580, 'y':633 },
+{'name':'建福宫', 'x':579, 'y':678 },
+{'name':'抚辰殿', 'x':575, 'y':716 },
+{'name':'建福门', 'x':578, 'y':745 },
+{'name':'广德门', 'x':584, 'y':874 },
+{'name':'延庆殿', 'x':585, 'y':898 },
+{'name':'延庆门', 'x':585, 'y':930 },
+{'name':'英华殿', 'x':368, 'y':573 },
+{'name':'寿安宫', 'x':380, 'y':802 }
+];
+			window.onload = function() {
+				var tempNode = null;
+				var nodeList = [];
+				var body = document.body;
+				var offset = 10;
+				fc.forEach(function(node, index) {
+					tempNode = document.createElement('div');
+					tempNode.style.left = node['x'] - offset + 'px';
+					tempNode.style.top = node['y'] - offset + 'px';
+					tempNode.className = 'place';
+					tempNode.setAttribute('name', node['name']);
+					nodeList.push(tempNode);
+				});
+				nodeList.forEach(function(node) {
+					body.appendChild(node);
+					node.style.display = 'block';
+					for (i = 0 ; i< 10; i++){
+						console.log('hello');
+					}
+				});
+				var elName = document.getElementById('namePrompt');
+				var lastNode = null;
+				body.onmouseover = function(e) {
+					var node = e.target;
+					//if (node.className && node.className.indexOf('place-hover') !== -1) return;
+					//lastNode && (lastNode.className = lastNode.className.replace(/\s?place-hover\s?/,''));
+					if (node.className && node.className.indexOf('place') !== -1) {
+						node.className +=' place-hover';
+						lastNode = node;
+						var text = node.getAttribute('name');
+						if (text) {
+							elName.innerHTML = node.getAttribute('name');
+							var left = window.parseInt(node.style.left)
+							var top = window.parseInt(node.style.top)
+							left += 30;
+							top -= 20;
+							elName.style.opacity = '0';
+							elName.style.left = left + 'px';
+							elName.style.top = top + 'px';
+							window.setTimeout(function(){
+								if (elName.style.opacity - 0 > 0.9) return;
+								elName.style.opacity = elName.style.opacity - 0 + 0.05;
+								window.setTimeout(arguments.callee);
+							},30);
+						 }
+					 }
+				}
+			}
+		</script>
+		<style>
+			body { background:url(fc.jpg); }
+			.place { display:none; position:absolute; width:20px; height:20px; background-color:black; padding:1px; border:solid 1px #fff; opacity:0.4;}
+			/*
+			.place-hover { background-color:black; padding:1px; border:solid 1px #fff; opacity:0.4; }
+			*/
+			#namePrompt { position:absolute; padding-left:10px; border:solid 1px #fff; z-index:9; width:100px; background-color:#333; color:#f5f5f5; }
+		</style>
+	</head>
+	<body>
+		<div id='namePrompt'></div>
+	</body>
+</html>
